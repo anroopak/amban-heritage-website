@@ -27,10 +27,10 @@ const Gallery = () => {
     const filteredImages = IMAGES.filter(image => TYPE_FILTERS[selectedIndex].filters.some(f => image.type.includes(f)))
     return (
         <div>
-            <ul class="nav nav-gallery">
+            <ul className="nav nav-gallery">
                 {TYPE_FILTERS.map((f, i) => (
-                    <li class="nav-item">
-                        <a class={`nav-link ${i === selectedIndex ? "active" : ""}`} aria-current="page" onClick={() => setIndex(i)}>{f.label}</a>
+                    <li className="nav-item" key={`nav-item-${i}`}>
+                        <span className={`nav-link ${i === selectedIndex ? "active" : ""}`} aria-current="page" onClick={() => setIndex(i)}>{f.label}</span>
                     </li>
                 ))}
             </ul>

@@ -2,7 +2,6 @@ import MaterialIcon from "./materialIcon"
 import CONTACTS from "../pages/api/contacts"
 
 const Footer = () => {
-
     return (
         <>
             <div className="d-md-flex align-items-start justify-content-between">
@@ -31,8 +30,8 @@ const Footer = () => {
                                     href: "https://kannurairport.aero/"
                                 },
                             ].map(
-                                logo => <div className={`keralaTourismLogo p-2 me-2`} >
-                                    <a href={logo.href} target="_blank">
+                                (logo, i) => <div className={`keralaTourismLogo p-2 me-2`} key={`logo-${i}`} >
+                                    <a href={logo.href} target="_blank" rel="noreferrer">
                                         <img src={`/images/${logo.src}`} style={{ height: "100px" }} className="img-fluid" />
                                     </a>
                                 </div>
@@ -48,7 +47,7 @@ const Footer = () => {
                     {CONTACTS.address.lines.map(line => <>{line}<br /></>)}
                 </div>
             </div>
-            <script async src="https://www.jscache.com/wejs?wtype=selfserveprop&amp;uniq=737&amp;locationId=5888749&amp;lang=en_IN&amp;rating=true&amp;nreviews=5&amp;writereviewlink=true&amp;popIdx=true&amp;iswide=false&amp;border=true&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
+            <script async src="https://www.jscache.com/wejs?wtype=selfserveprop&amp;uniq=737&amp;locationId=5888749&amp;lang=en_IN&amp;rating=true&amp;nreviews=5&amp;writereviewlink=true&amp;popIdx=true&amp;iswide=false&amp;border=true&amp;display_version=2" data-loadtrk onLoad="this.loadtrk=true"></script>
         </>
     )
 }

@@ -1,7 +1,6 @@
 import CommonHead from "../components/head"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import AirBnB from '../components/airbnb';
 import TripAdvisor from '../components/tripadvisor';
 import MaterialIcon from "../components/materialIcon";
 import Gallery from '../components/gallery';
@@ -9,6 +8,7 @@ import Footer from '../components/footer';
 import CONTACTS from './api/contacts';
 import useWindowSize from '../components/windowsize';
 import BookingOptions, {Rooms} from '../components/bookingOptions';
+import Link from "next/link";
 
 function yearsOld() {
   const estdYear = new Date(1904, 1, 1)
@@ -20,7 +20,7 @@ function yearsOld() {
 const AmbanDesc = ({ addLineBreak = true }) => {
   return (
     <p>
-      Amban Heritage is a {yearsOld()} year old "Tharavaadu" - ancient ancestral home.
+      Amban Heritage is a {yearsOld()} year old &quot;Tharavaadu&quot; - ancient ancestral home.
       {addLineBreak ? <br /> : ' '}
       Amban Heritage welcomes you to the traditions of Kannur, Relive Heritage and relax.
     </p>
@@ -39,11 +39,12 @@ export default function Home() {
             <h2>Relive Heritage</h2>
             <AmbanDesc />
             <div>
-              <a href={`https://wa.me/${CONTACTS.phoneNumbers[0].replace('+', '').replace('-', '')}?text=${encodeURI(CONTACTS.whatsappText)}`} target="_blank" className="btn btn-outlined btn-light px-4">
+              <a href={`https://wa.me/${CONTACTS.phoneNumbers[0].replace('+', '').replace('-', '')}?text=${encodeURI(CONTACTS.whatsappText)}`} 
+                target="_blank" rel="noreferrer" className="btn btn-outlined btn-light px-4">
                 Book via Whatsapp
             </a>
             </div>
-            <p className="mt-4">"Silver House" Homestay <br />approved by Department of Tourism, Govt. of Kerala</p>
+            <p className="mt-4">&quot;Silver House&quot; Homestay <br />approved by Department of Tourism, Govt. of Kerala</p>
             <div className="d-flex align-items-center">
               <div className={`keralaTourismLogo p-2`} >
                 <img src="/images/kerala-tourism-logo.png" style={{ height: "100px" }} className="img-fluid" />
@@ -113,7 +114,7 @@ export default function Home() {
             </div>
             <p className="fw-bold text-md-center text-left">
               <a href="https://www.keralatourism.org/homestays/amban-heritage/4447" target="_blank" rel="noopener noreferrer">
-                "Silver House" Homestay <br /> approved by Department of Tourism, Govt. of Kerala <br />
+                &quot;Silver House&quot; Homestay <br /> approved by Department of Tourism, Govt. of Kerala <br />
               </a>
             </p>
             <div className="mt-2">
@@ -126,8 +127,8 @@ export default function Home() {
       <div className="container">
         <h1>Rooms</h1>
         <div className="d-md-flex align-items-top justify-content-between">
-        {Object.values(Rooms).map(o => (
-                <div className="mb-1">
+        {Object.values(Rooms).map((o,i) => (
+                <div className="mb-1" key={`room-${i}`}>
                     <h4>{o.label}</h4>
                     <div className="ms-4">
                         <p>
@@ -152,9 +153,9 @@ export default function Home() {
               <small>to book our homestay</small>
             </p>
             {CONTACTS.phoneNumbers.map(
-              phoneNumber => <MaterialIcon className="me-2" icon="phone" desc={<a href={`tel:${phoneNumber}`}>{phoneNumber}</a>} />
+              (phoneNumber, i) => <MaterialIcon key={`phone-${i}`} className="me-2" icon="phone" desc={<Link href={`tel:${phoneNumber}`}>{phoneNumber}</Link>} />
             )}
-            <MaterialIcon className="me-2" icon="email" desc={<a href={`mailto:${CONTACTS.email}`}>{CONTACTS.email}</a>} />
+            <MaterialIcon className="me-2" icon="email" desc={<Link href={`mailto:${CONTACTS.email}`}>{CONTACTS.email}</Link>} />
           </div>
         </div>
       </div>

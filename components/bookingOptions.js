@@ -35,10 +35,10 @@ export const Rooms = {
     "ground-floor-master-bedroom": {
         label: "Master bedroom on the ground floor",
         amenities: [
-            <MaterialIcon icon="bed" desc="King size bed" />,
-            <MaterialIcon icon="ac_unit" desc="Air Conditioned" />,
-            <MaterialIcon icon="bathroom" desc="Attached bathroom and toilet" />,
-            <MaterialIcon icon="connected_tv" desc="TV with Amazon Fire TV" />,
+            <MaterialIcon key="bed" icon="bed" desc="King size bed" />,
+            <MaterialIcon key="ac_unit" icon="ac_unit" desc="Air Conditioned" />,
+            <MaterialIcon key="bathroom" icon="bathroom" desc="Attached bathroom and toilet" />,
+            <MaterialIcon key="connected_tv" icon="connected_tv" desc="TV with Amazon Fire TV" />,
         ],
         rate: 2100,
         max: 2,
@@ -47,10 +47,10 @@ export const Rooms = {
     "top-floor-master-bedroom": {
         label: "Master bedroom on the top floor",
         amenities: [
-            <MaterialIcon icon="bed" desc="Queen size bed" />,
-            <MaterialIcon icon="ac_unit" desc="Air Conditioned" />,
-            <MaterialIcon icon="bathroom" desc="Attached bathroom and toilet" />,
-            <MaterialIcon icon="connected_tv" desc="TV with Amazon Fire TV" />,
+            <MaterialIcon key="bed" icon="bed" desc="Queen size bed" />,
+            <MaterialIcon key="ac_unit" icon="ac_unit" desc="Air Conditioned" />,
+            <MaterialIcon key="bathroom" icon="bathroom" desc="Attached bathroom and toilet" />,
+            <MaterialIcon key="connected_tv" icon="connected_tv" desc="TV with Amazon Fire TV" />,
         ],
         rate: 2100,
         max: 2,
@@ -59,8 +59,8 @@ export const Rooms = {
     "top-floor-second-bedroom": {
         label: "Second bedroom on the top floor",
         amenities: [
-            <MaterialIcon icon="bed" desc="2 single beds" />,
-            <MaterialIcon icon="info" desc="No A/C, No attached bathroom" />
+            <MaterialIcon key="bed" icon="bed" desc="2 single beds" />,
+            <MaterialIcon key="info" icon="info" desc="No A/C, No attached bathroom" />
         ],
         rate: 700,
         max: 2,
@@ -155,17 +155,17 @@ const BookingOptions = () => {
                 <div className="col-md-4">
                     <h2>Details</h2>
                     <form action="">
-                        <label for="number-pax" class="form-label">Number of Adults</label>
-                        <div class="input-group mb-3">
-                            <input type="number" onChange={(e) => setNumberOfPax(parseInt(e.target.value))} defaultValue={2} class="form-control" id="number-pax" aria-describedby="basic-addon3" />
+                        <label htmlFor="number-pax" className="form-label">Number of Adults</label>
+                        <div className="input-group mb-3">
+                            <input type="number" onChange={(e) => setNumberOfPax(parseInt(e.target.value))} defaultValue={2} className="form-control" id="number-pax" aria-describedby="basic-addon3" />
                         </div>
-                        <label for="date-check-in" class="form-label">Check-In</label>
-                        <div class="input-group mb-3">
-                            <input type="date" onChange={(e) => setCheckInDate(e.target.value)} defaultValue={2} class="form-control" id="date-check-in" aria-describedby="basic-addon3" />
+                        <label htmlFor="date-check-in" className="form-label">Check-In</label>
+                        <div className="input-group mb-3">
+                            <input type="date" onChange={(e) => setCheckInDate(e.target.value)} defaultValue={2} className="form-control" id="date-check-in" aria-describedby="basic-addon3" />
                         </div>
-                        <label for="date-check-out" class="form-label">Check-Out</label>
-                        <div class="input-group mb-3">
-                            <input type="date" onChange={(e) => setCheckOutDate(e.target.value)} defaultValue={2} class="form-control" id="date-check-out" aria-describedby="basic-addon3" />
+                        <label htmlFor="date-check-out" className="form-label">Check-Out</label>
+                        <div className="input-group mb-3">
+                            <input type="date" onChange={(e) => setCheckOutDate(e.target.value)} defaultValue={2} className="form-control" id="date-check-out" aria-describedby="basic-addon3" />
                         </div>
                         <div className="mt-4">
                             <input type="button" value="Book via WhatsApp" className="form-control" onClick={onBooking} />
@@ -177,7 +177,7 @@ const BookingOptions = () => {
                         <div className="d-md-flex align-items-top">
                             {
                                 (options || []).map((o, i) =>
-                                    <div className="me-2">
+                                    <div className="me-2" key={`option-${i}`}>
                                     <ShowOption option={o} index={i} nights={dateDiff || 1} pax={numberOfPax} />
                                     </div>
                                 )
