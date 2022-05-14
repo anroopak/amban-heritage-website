@@ -1,9 +1,10 @@
 const CONTACTS = {
-    email: "booking@ambanheritage.com",
+    email: "booking@ambanheritage.in",
     phoneNumbers: [
         "+91-9448714334",
         "+91-7795937091"
     ], 
+    whatsappText: 'Hello, I have a booking enquiry for Amban Heritage.',
     address: {
         name: "Amban Heritage Homestay",
         lines: [

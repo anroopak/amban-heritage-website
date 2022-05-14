@@ -1,5 +1,5 @@
 import Head from 'next/head'
-export default function head() {
+export default function head() {    
     return (
         <Head>
             <title>Amban Heritage Homestay - Relive Heritage</title>
@@ -18,8 +18,5 @@ export default function head() {
             */}
             <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet" />
             <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-            {/* AirBnB */}
-            <script async="" src="https://www.airbnb.co.in/embeddable/airbnb_jssdk"></script>
         </Head>)
 }

@@ -1,14 +1,14 @@
-import styles from '../styles/Home.module.css'
 import CommonHead from "../components/head"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AirBnB from '../components/airbnb';
+import TripAdvisor from '../components/tripadvisor';
 import MaterialIcon from "../components/materialIcon";
-import Destination from '../components/destination';
 import Gallery from '../components/gallery';
 import Footer from '../components/footer';
 import CONTACTS from './api/contacts';
-import DESTINATIONS from './api/destinations';
+import useWindowSize from '../components/windowsize';
+import BookingOptions, {Rooms} from '../components/bookingOptions';
 
 function yearsOld() {
   const estdYear = new Date(1904, 1, 1)
@@ -28,27 +28,27 @@ const AmbanDesc = ({ addLineBreak = true }) => {
 }
 
 export default function Home() {
-
+  const windowSize = useWindowSize()
   return (
     <div>
       <CommonHead />
-      <div className={`${styles.banner}`}>
-        <div className={`${styles.bannerOverlay} h-100`}>
+      <div className={`banner`}>
+        <div className={`bannerOverlay h-100`}>
           <div className="h-100 container ps-4 d-flex flex-column justify-content-center">
             <h1>Amban Heritage Homestay</h1>
             <h2>Relive Heritage</h2>
             <AmbanDesc />
             <div>
-              <a href="#bookNow" className="btn btn-outlined btn-light px-4">
-                Book Now
+              <a href={`https://wa.me/${CONTACTS.phoneNumbers[0].replace('+', '').replace('-', '')}?text=${encodeURI(CONTACTS.whatsappText)}`} target="_blank" className="btn btn-outlined btn-light px-4">
+                Book via Whatsapp
             </a>
             </div>
             <p className="mt-4">"Silver House" Homestay <br />approved by Department of Tourism, Govt. of Kerala</p>
             <div className="d-flex align-items-center">
-              <div className={`${styles.keralaTourismLogo} p-2`} >
+              <div className={`keralaTourismLogo p-2`} >
                 <img src="/images/kerala-tourism-logo.png" style={{ height: "100px" }} className="img-fluid" />
               </div>
-              <div className={`${styles.keralaTourismLogo} p-2 ms-2`} >
+              <div className={`keralaTourismLogo p-2 ms-2`} >
                 <img src="/images/kerala-tourism-silver-logo.png" style={{ height: "100px" }} className="img-fluid" />
               </div>
             </div>
@@ -104,26 +104,49 @@ export default function Home() {
           </div>
           <div className="col-md-4 col-sm-12">
             <div className="d-flex justify-content-center">
-              <div className={`${styles.keralaTourismLogo} p-2`} >
+              <div className={`keralaTourismLogo p-2`} >
                 <img src="/images/kerala-tourism-logo.png" style={{ height: "100px" }} className="img-fluid" />
               </div>
-              <div className={`${styles.keralaTourismLogo} p-2 ms-2`} >
+              <div className={`keralaTourismLogo p-2 ms-2`} >
                 <img src="/images/kerala-tourism-silver-logo.png" style={{ height: "100px" }} className="img-fluid" />
               </div>
             </div>
             <p className="fw-bold text-md-center text-left">
-              "Silver House" Homestay <br /> approved by Department of Tourism, Govt. of Kerala
+              <a href="https://www.keralatourism.org/homestays/amban-heritage/4447" target="_blank" rel="noopener noreferrer">
+                "Silver House" Homestay <br /> approved by Department of Tourism, Govt. of Kerala <br />
+              </a>
             </p>
             <div className="mt-2">
-              <AirBnB />
+              <TripAdvisor />
             </div>
           </div>
         </div>
       </div>
 
+      <div className="container">
+        <h1>Rooms</h1>
+        <div className="d-md-flex align-items-top justify-content-between">
+        {Object.values(Rooms).map(o => (
+                <div className="mb-1">
+                    <h4>{o.label}</h4>
+                    <div className="ms-4">
+                        <p>
+                        {o.amenities}
+                        <MaterialIcon icon="group" desc={`Comfortable for ${o.max}`} />
+                        {o.extraLimit ? <MaterialIcon icon="group" desc={`Accommodate upto ${o.extraLimit} more`} /> : null}
+                        </p>
+                    </div>
+                </div>
+            ))}
+            </div>
+      </div>
+
       <div className="container-fluid bg-brown py-4 mt-4" id="bookNow">
         <div className="container">
-          <div className="d-md-flex align-items-center justify-content-md-between">
+          <h1>Booking</h1>
+          <BookingOptions />
+          <hr/>
+          <div className="mt-4 d-md-flex align-items-center justify-content-md-between">
             <p>
               Contact Us <br />
               <small>to book our homestay</small>
@@ -133,18 +156,17 @@ export default function Home() {
             )}
             <MaterialIcon className="me-2" icon="email" desc={<a href={`mailto:${CONTACTS.email}`}>{CONTACTS.email}</a>} />
           </div>
-
         </div>
       </div>
 
       <div className="container mt-4">
         <h1>Places to Visit</h1>
-        <div className="d-flex">
-
+        <iframe src="https://www.google.com/maps/d/embed?mid=1dKbT2zfx1J2AXQAS_wI0nXQpKzfAyL4s&hl=en&ehbc=2E312F" width={Math.max(320, windowSize.width - 500)} height="480"></iframe>
+        {/* <div className="d-flex">
           {
             Object.keys(DESTINATIONS).map(slug => <Destination slug={slug} {...DESTINATIONS[slug]} />)
           }
-        </div>
+        </div> */}
       </div>
 
       <div className="container mt-4">
