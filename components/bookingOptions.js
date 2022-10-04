@@ -35,41 +35,42 @@ export const Rooms = {
     "ground-floor-master-bedroom": {
         label: "Master bedroom on the ground floor",
         amenities: [
-            <MaterialIcon key="bed" icon="bed" desc="King size bed" />,
+            <MaterialIcon key="bed" icon="bed" desc="Queen size bed" />,
             <MaterialIcon key="ac_unit" icon="ac_unit" desc="Air Conditioned" />,
             <MaterialIcon key="bathroom" icon="bathroom" desc="Attached bathroom and toilet" />,
-            <MaterialIcon key="connected_tv" icon="connected_tv" desc="TV with Amazon Fire TV" />,
+            <MaterialIcon key="connected_tv" icon="connected_tv" desc="TV with Amazon Fire TV (in adjacent room)" />,
         ],
-        rate: 2100,
+        rate: 2000,
         max: 2,
         extraLimit: 0
     },
     "top-floor-master-bedroom": {
         label: "Master bedroom on the top floor",
         amenities: [
-            <MaterialIcon key="bed" icon="bed" desc="Queen size bed" />,
+            <MaterialIcon key="bed" icon="bed" desc="Double cot bed" />,
             <MaterialIcon key="ac_unit" icon="ac_unit" desc="Air Conditioned" />,
             <MaterialIcon key="bathroom" icon="bathroom" desc="Attached bathroom and toilet" />,
-            <MaterialIcon key="connected_tv" icon="connected_tv" desc="TV with Amazon Fire TV" />,
+            <MaterialIcon key="connected_tv" icon="connected_tv" desc="TV with Amazon Fire TV (in adjacent room)" />,
         ],
-        rate: 2100,
+        rate: 2000,
         max: 2,
-        extraLimit: 1
+        extraLimit: 0
     },
     "top-floor-second-bedroom": {
         label: "Second bedroom on the top floor",
         amenities: [
             <MaterialIcon key="bed" icon="bed" desc="2 single beds" />,
-            <MaterialIcon key="info" icon="info" desc="No A/C, No attached bathroom" />
+            <MaterialIcon key="info" icon="info" desc="No A/C, No attached bathroom" />,
+            <MaterialIcon key="bathroom" icon="bathroom" desc="Common bathroom available" />
         ],
-        rate: 700,
+        rate: 1000,
         max: 2,
-        extraLimit: 2
+        extraLimit: 0
     }
 }
 
 const RoomExtra = {
-    rate: 700
+    rate: 500
 }
 
 const ShowOption = ({ option, index, nights, pax }) => {
@@ -131,8 +132,8 @@ const BookingOptions = () => {
     const checkOutDateObject = new Date(checkOutDate)
     const dateDiff = checkInDateObject && checkOutDateObject && ((checkOutDateObject - checkInDateObject) / (1000 * 60 * 60 * 24))
 
+    const pax = Math.max(numberOfPax || 0, 1)
     let options = Options[numberOfPax]?.options
-    const pax = numberOfPax || 0
     if (options === undefined) {
         const keys = Object.keys(Options)
         for (let i = 0; i < keys.length - 1; i++) {

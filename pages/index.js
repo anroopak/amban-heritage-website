@@ -125,7 +125,7 @@ export default function Home() {
       </div>
 
       <div className="container">
-        <h1>Rooms</h1>
+        <h1 className="mt-4">Rooms</h1>
         <div className="d-md-flex align-items-top justify-content-between">
         {Object.values(Rooms).map((o,i) => (
                 <div className="mb-1" key={`room-${i}`}>
