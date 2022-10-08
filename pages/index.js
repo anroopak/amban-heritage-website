@@ -73,18 +73,21 @@ export default function Home() {
               Major festivals and events are held throughout the year and this is among the best places in Kerala to spend your vacation in.
             </p>
             <AmbanDesc addLineBreak={false} />
+            
             <div className="mt-2">
               <h2>Services inside the premise</h2>
               <div>
                 <div className="row">
                   <div className="col-md-6 col-12">
-                    <MaterialIcon icon="kitchen" desc="Kitchen" />
+                    <MaterialIcon icon="ac_unit" desc="Air Conditioning" />
+                    <MaterialIcon icon="wifi" desc="Wifi" />
                     <MaterialIcon icon="directions_car" desc="Vehicle parking" />
                     <MaterialIcon icon="fence" desc="Private backyard - fully fenced" />
                   </div>
                   <div className="col-md-6 col-12">
-                    <MaterialIcon icon="ac_unit" desc="Air Conditioning" />
-                    <MaterialIcon icon="wifi" desc="Wifi" />
+                    <MaterialIcon icon="kitchen" desc="Kitchen" />
+                    <MaterialIcon icon="breakfast_dining" desc="Complementary breakfast" />
+                    <MaterialIcon icon="restaurant" desc="Chargeable lunch and dinner on request" />
                   </div>
                 </div>
               </div>
@@ -126,6 +129,9 @@ export default function Home() {
 
       <div className="container">
         <h1 className="mt-4">Rooms</h1>
+        <p style={{ textAlign: "justify" }}>
+          Our home has 2 floors each having 1 A/C master bedroom with attached bathroom, 1 TV room and 1 non A/C bedroom without an attached bathroom. 
+        </p>
         <div className="d-md-flex align-items-top justify-content-between">
         {Object.values(Rooms).map((o,i) => (
                 <div className="mb-1" key={`room-${i}`}>
