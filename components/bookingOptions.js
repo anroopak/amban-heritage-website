@@ -49,7 +49,7 @@ export const Rooms = {
         desc="TV with Amazon Fire TV (in adjacent room)"
       />,
     ],
-    rate: 2000,
+    rate: 2200,
     max: 2,
     extraLimit: 0,
   },
@@ -69,7 +69,7 @@ export const Rooms = {
         desc="TV with Amazon Fire TV (in adjacent room)"
       />,
     ],
-    rate: 2000,
+    rate: 2200,
     max: 2,
     extraLimit: 0,
   },
@@ -88,14 +88,14 @@ export const Rooms = {
         desc="Common bathroom available"
       />,
     ],
-    rate: 1000,
+    rate: 1100,
     max: 2,
     extraLimit: 0,
   },
 };
 
 const RoomExtra = {
-  rate: 500,
+  rate: 700,
 };
 
 const ShowOption = ({ option, index, nights, pax }) => {
