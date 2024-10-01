@@ -183,8 +183,8 @@ export default function Home() {
         <h1 className="mt-4">Rooms</h1>
         <p style={{ textAlign: "justify" }}>
           Our home has 2 floors - each having 1 A/C master bedroom with attached
-          bathroom, 1 TV room and 1 non A/C bedroom without an attached
-          bathroom.
+          bathroom, 1 Common room and 1 non A/C bedroom without an attached
+          bathroom. There is an extra common bathroom on the ground floor.
         </p>
         <div className="d-md-flex align-items-top justify-content-between">
           {Object.values(Rooms).map((o, i) => (

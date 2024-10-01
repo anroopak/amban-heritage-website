@@ -34,7 +34,7 @@ const Options = {
 };
 export const Rooms = {
   "ground-floor-master-bedroom": {
-    label: "Master bedroom on the ground floor",
+    label: "Master Bedroom on the ground floor",
     amenities: [
       <MaterialIcon key="bed" icon="bed" desc="Queen size bed" />,
       <MaterialIcon key="ac_unit" icon="ac_unit" desc="Air Conditioned" />,
@@ -49,7 +49,26 @@ export const Rooms = {
         desc="TV with Amazon Fire TV (in adjacent room)"
       />,
     ],
-    rate: 2200,
+    rate: 2500,
+    max: 2,
+    extraLimit: 0,
+  },
+  "ground-floor-second-bedroom": {
+    label: "Second Bedroom on the ground floor",
+    amenities: [
+      <MaterialIcon key="bed" icon="bed" desc="2 single beds" />,
+      <MaterialIcon
+        key="info"
+        icon="info"
+        desc="No A/C, No attached bathroom"
+      />,
+      <MaterialIcon
+        key="bathroom"
+        icon="bathroom"
+        desc="Common bathroom available"
+      />,
+    ],
+    rate: 1500,
     max: 2,
     extraLimit: 0,
   },
@@ -69,7 +88,7 @@ export const Rooms = {
         desc="TV with Amazon Fire TV (in adjacent room)"
       />,
     ],
-    rate: 2200,
+    rate: 2500,
     max: 2,
     extraLimit: 0,
   },
@@ -88,7 +107,7 @@ export const Rooms = {
         desc="Common bathroom available"
       />,
     ],
-    rate: 1100,
+    rate: 1500,
     max: 2,
     extraLimit: 0,
   },
@@ -231,6 +250,7 @@ const BookingOptions = () => {
               <h5>Full House</h5>
               <p>
                 {Rooms["ground-floor-master-bedroom"].label},{" "}
+                {Rooms["ground-floor-second-bedroom"].label},{" "}
                 {Rooms["top-floor-master-bedroom"].label} and{" "}
                 {Rooms["top-floor-second-bedroom"].label}
               </p>
@@ -238,22 +258,28 @@ const BookingOptions = () => {
                 &#8377;{" "}
                 {Rooms["top-floor-master-bedroom"].rate +
                   Rooms["top-floor-second-bedroom"].rate +
+                  Rooms["ground-floor-second-bedroom"].rate +
                   Rooms["ground-floor-master-bedroom"].rate}{" "}
                 per night
+                <br />
+                Upto{" "}
+                {Rooms["top-floor-master-bedroom"].max +
+                  Rooms["top-floor-second-bedroom"].max +
+                  Rooms["ground-floor-second-bedroom"].max +
+                  Rooms["ground-floor-master-bedroom"].max}{" "}
+                people
               </p>
             </div>
             <div className="col-md-5 border p-4 m-2">
               <h5>Extra Person</h5>
-              <p>
-                &#8377;{" "}
-                {RoomExtra.rate} per person per night
-              </p>
+              <p>&#8377; {RoomExtra.rate} per person per night</p>
             </div>
             <div className="col-md-5 border p-4 m-2">
               <h5>Food</h5>
               <p>
-                Breakfast complementary, <br /> 
-                Kerala style Lunch and Dinner available on request on paid-basis. 
+                Breakfast complementary, <br />
+                Kerala style Lunch and Dinner available on request on
+                paid-basis.
               </p>
             </div>
           </div>
